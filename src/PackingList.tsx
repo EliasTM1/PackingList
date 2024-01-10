@@ -1,7 +1,14 @@
 import { Button, HStack, Select, VStack } from "@chakra-ui/react";
 import Item from "./Item";
+import { TravelITem } from "./Mock";
 
-const PackingList = () => {
+type PackingListProps = {
+	items: TravelITem[];
+	deleteItem: (item: number) => void;
+	crossItem: (item: number) => void;
+};
+
+const PackingList = ({ items, deleteItem, crossItem }: PackingListProps) => {
 	return (
 		<VStack
 			width='100%'
@@ -10,7 +17,17 @@ const PackingList = () => {
 			justifyContent='space-between'
 		>
 			<HStack flexWrap='wrap' marginTop='2rem' justifyContent='center' gap={7}>
-				<Item />
+				{items.map(({ description, id, packed, quantity }: TravelITem) => (
+					<Item
+						key={id}
+						id={id}
+						description={description}
+						packed={packed}
+						quantity={quantity}
+						deleteItem={deleteItem}
+						crossItem={crossItem}
+					/>
+				))}
 			</HStack>
 			<HStack mb='2rem'>
 				<Select borderRadius='15px' backgroundColor='packColors.packBeige'>
@@ -18,7 +35,11 @@ const PackingList = () => {
 					<option>Sort by description</option>
 					<option>Sort by packed status</option>
 				</Select>
-				<Button borderRadius='15px' backgroundColor='packColors.packBlue' paddingInline="1.5rem">
+				<Button
+					borderRadius='15px'
+					backgroundColor='packColors.packBlue'
+					paddingInline='1.5rem'
+				>
 					Clear List
 				</Button>
 			</HStack>
@@ -27,4 +48,3 @@ const PackingList = () => {
 };
 
 export default PackingList;
-

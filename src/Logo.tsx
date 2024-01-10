@@ -7,9 +7,9 @@ const Logo = () => {
 			display='flex'
 			justifyContent='center'
 			backgroundColor='packColors.packClearOrange'
-			fontSize='5rem'
+			fontSize='4rem'
 		>
-			🏝️ Packing List 🧳
+			🏝️ Vacation list 🧳
 		</Heading>
 	);
 };
