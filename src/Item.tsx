@@ -10,7 +10,7 @@ const Item = ({ description, packed, quantity, id, deleteItem, crossItem }: Item
 	return (
 		<>
 			<Box display='flex' gap='.5rem'>
-				<input type='checkbox' onClick={() => crossItem(id)}/>
+				<input type='checkbox' onClick={() => crossItem(id)} style={{cursor: "pointer"}}/>
 				{packed ? (
 					<Text color='packColors.packBeige'>
 						<s>{quantity} {description}</s> 

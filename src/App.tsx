@@ -23,12 +23,16 @@ function App() {
 		setTravelItems(items => items.map(item => itemId === item.id ? {...item , packed: !item.packed}: item ))
 	}
 
+	function handleDeleteItems() {
+		setTravelItems([])
+	}
+
 	return (
 		<VStack gap={0} height="100vh">
 			<Logo />
 			<Form onAddItems={handleAddItems} />
-			<PackingList items={travelItems} deleteItem={deleteItem} crossItem={setItemToPacked}/>
-			<Stats />
+			<PackingList onDeleteItems={handleDeleteItems} items={travelItems} deleteItem={deleteItem} crossItem={setItemToPacked}/>
+			<Stats items={travelItems}/>
 		</VStack>
 	);
 }

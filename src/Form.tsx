@@ -10,7 +10,8 @@ const Form = ({ onAddItems }: FormProps) => {
 	const [addedItem, setAddedItem] = useState<string>("");
 	const [quantity, setQuantity] = useState<number>(1);
 
-	function handleFieldSubmit(e: ChangeEvent<HTMLButtonElement>) {
+	// function handleFieldSubmit(e: ChangeEvent<HTMLButtonElement>) {
+	function handleFieldSubmit(e: any) {
 		e.preventDefault();
 		setAddedItem(e.target.value);
 
@@ -21,7 +22,6 @@ const Form = ({ onAddItems }: FormProps) => {
 			quantity,
 		};
 
-		console.log(newItem, "NEW ITEM");
 		onAddItems(newItem);
 		setAddedItem("");
 		setQuantity(1);
@@ -37,7 +37,7 @@ const Form = ({ onAddItems }: FormProps) => {
 			<Text fontSize='1.2rem' fontWeight='bold'>
 				What do you need for your 😍 trip?
 			</Text>
-			<form>
+			<form onSubmit={(e) => handleFieldSubmit(e)}>
 				<HStack gap='2rem'>
 					<Select
 						borderRadius='15px'
@@ -65,8 +65,8 @@ const Form = ({ onAddItems }: FormProps) => {
 					<Button
 						borderRadius='15'
 						backgroundColor='packColors.packBlue'
-						onSubmit={handleFieldSubmit}
-						onClick={handleFieldSubmit}
+						onSubmit={(e) => handleFieldSubmit(e)}
+						onClick={(e) => handleFieldSubmit(e)}
 					>
 						Add
 					</Button>
